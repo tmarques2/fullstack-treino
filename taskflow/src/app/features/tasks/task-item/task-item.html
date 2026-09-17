@@ -1,0 +1,91 @@
+<article
+  class="task-item"
+  [class.completed]="task().completed"
+  [class.editing]="isEditing()"
+>
+  @if (isEditing()) {
+    <div class="task-edit-content">
+      <input
+        class="task-edit-input"
+        type="text"
+        [(ngModel)]="editTitle"
+        maxlength="120"
+        aria-label="Título da tarefa"
+        (keydown.enter)="saveEdit()"
+        (keydown.escape)="cancelEdit()"
+      />
+
+      <div class="task-edit-actions">
+        <button
+          class="save-task-button"
+          type="button"
+          [disabled]="!editTitle.trim()"
+          (click)="saveEdit()"
+        >
+          Salvar
+        </button>
+
+        <button
+          class="cancel-edit-button"
+          type="button"
+          (click)="cancelEdit()"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  } @else {
+    <label class="task-content">
+      <input
+        class="task-checkbox"
+        type="checkbox"
+        [checked]="task().completed"
+        (change)="requestToggle()"
+      />
+
+      <div class="task-information">
+        <span class="task-title">
+          {{ task().title }}
+        </span>
+
+        <div class="task-metadata">
+          <span
+            class="priority-badge"
+            [class.priority-low]="task().priority === 'LOW'"
+            [class.priority-medium]="task().priority === 'MEDIUM'"
+            [class.priority-high]="task().priority === 'HIGH'"
+          >
+            Prioridade: {{ getPriorityLabel(task().priority) }}
+          </span>
+
+          <span
+            class="due-date"
+            [class.without-due-date]="!task().dueDate"
+          >
+            Prazo: {{ formatDueDate(task().dueDate) }}
+          </span>
+        </div>
+      </div>
+    </label>
+
+    <div class="task-actions">
+      <button
+        class="edit-task-button"
+        type="button"
+        (click)="startEdit()"
+        [attr.aria-label]="'Editar tarefa: ' + task().title"
+      >
+        Editar
+      </button>
+
+      <button
+        class="delete-task-button"
+        type="button"
+        (click)="requestDelete()"
+        [attr.aria-label]="'Excluir tarefa: ' + task().title"
+      >
+        Excluir
+      </button>
+    </div>
+  }
+</article>

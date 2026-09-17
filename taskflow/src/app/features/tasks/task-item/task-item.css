@@ -1,0 +1,242 @@
+:host {
+  display: block;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 54px;
+  padding: 10px 12px;
+  border: 1px solid rgb(254 205 211 / 15%);
+  border-radius: 11px;
+  background: linear-gradient(135deg, rgb(75 8 19 / 90%), rgb(42 4 11 / 90%));
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.task-item:hover {
+  border-color: #be123c;
+  background: linear-gradient(135deg, rgb(100 10 28 / 95%), rgb(52 5 14 / 95%));
+  transform: translateY(-1px);
+}
+
+.task-item.editing {
+  border-color: rgb(251 113 133 / 65%);
+  background: linear-gradient(135deg, rgb(94 12 29 / 98%), rgb(50 5 14 / 98%));
+}
+
+.task-content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.task-checkbox {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  accent-color: #e11d48;
+  cursor: pointer;
+}
+
+.task-information {
+  display: grid;
+  min-width: 0;
+  gap: 6px;
+}
+
+.task-title {
+  overflow: hidden;
+  color: #fff1f2;
+  font-size: 0.94rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.task-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.priority-badge,
+.due-date {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.priority-low {
+  border: 1px solid rgb(110 231 183 / 38%);
+  background: rgb(6 78 59 / 58%);
+  color: #a7f3d0;
+}
+
+.priority-medium {
+  border: 1px solid rgb(253 224 71 / 36%);
+  background: rgb(113 63 18 / 52%);
+  color: #fde68a;
+}
+
+.priority-high {
+  border: 1px solid rgb(251 113 133 / 48%);
+  background: rgb(136 19 55 / 62%);
+  color: #fecdd3;
+}
+
+.due-date {
+  border: 1px solid rgb(191 219 254 / 28%);
+  background: rgb(30 58 138 / 34%);
+  color: #bfdbfe;
+}
+
+.due-date.without-due-date {
+  border-color: rgb(254 205 211 / 20%);
+  background: rgb(76 5 25 / 42%);
+  color: #fda4af;
+}
+
+.completed {
+  opacity: 0.65;
+}
+
+.completed .task-title {
+  color: #fda4af;
+  text-decoration: line-through;
+}
+
+.task-actions,
+.task-edit-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-task-button,
+.delete-task-button,
+.save-task-button,
+.cancel-edit-button {
+  height: 32px;
+  border-radius: 8px;
+  padding: 0 10px;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.edit-task-button {
+  border: 1px solid rgb(253 164 175 / 52%);
+  background: rgb(136 19 55 / 48%);
+  color: #fecdd3;
+}
+
+.edit-task-button:hover {
+  border-color: #fb7185;
+  background: rgb(190 24 93 / 65%);
+  color: #fff;
+}
+
+.delete-task-button {
+  border: 1px solid #be123c;
+  background: rgb(127 29 29 / 72%);
+  color: #fecdd3;
+}
+
+.delete-task-button:hover {
+  background: #be123c;
+  color: #fff;
+}
+
+.task-edit-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-edit-input {
+  width: 100%;
+  min-width: 0;
+  height: 36px;
+  border: 1px solid rgb(253 164 175 / 55%);
+  border-radius: 8px;
+  padding: 0 10px;
+  background: rgb(30 4 10 / 75%);
+  color: #fff1f2;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.task-edit-input:focus {
+  border-color: #fb7185;
+  outline: 3px solid rgb(251 113 133 / 22%);
+}
+
+.save-task-button {
+  border: 1px solid #e11d48;
+  background: #e11d48;
+  color: #fff;
+}
+
+.save-task-button:hover:not(:disabled) {
+  background: #be123c;
+}
+
+.save-task-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.cancel-edit-button {
+  border: 1px solid rgb(254 205 211 / 30%);
+  background: transparent;
+  color: #fecdd3;
+}
+
+.cancel-edit-button:hover {
+  background: rgb(255 255 255 / 10%);
+  color: #fff;
+}
+
+@media (max-width: 560px) {
+  .task-item,
+  .task-edit-content {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .task-content {
+    width: 100%;
+  }
+
+  .task-actions,
+  .task-edit-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .task-edit-input {
+    min-height: 40px;
+  }
+}

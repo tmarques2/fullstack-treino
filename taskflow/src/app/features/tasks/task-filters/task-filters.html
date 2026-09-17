@@ -1,0 +1,25 @@
+<div class="task-filters" aria-label="Filtros de tarefas">
+  <button
+    type="button"
+    [class.active]="activeFilter() === 'all'"
+    (click)="selectFilter('all')"
+  >
+    Todas
+  </button>
+
+  <button
+    type="button"
+    [class.active]="activeFilter() === 'pending'"
+    (click)="selectFilter('pending')"
+  >
+    Pendentes
+  </button>
+
+  <button
+    type="button"
+    [class.active]="activeFilter() === 'completed'"
+    (click)="selectFilter('completed')"
+  >
+    Concluídas
+  </button>
+</div>

@@ -1,0 +1,19 @@
+<section class="task-summary" aria-label="Resumo das tarefas">
+  <article class="summary-card total-card">
+    <span class="summary-label">Total</span>
+    <strong class="summary-value">{{ totalTasks() }}</strong>
+    <span class="summary-description">tarefas cadastradas</span>
+  </article>
+
+  <article class="summary-card pending-card">
+    <span class="summary-label">Pendentes</span>
+    <strong class="summary-value">{{ pendingTasks() }}</strong>
+    <span class="summary-description">a serem concluídas</span>
+  </article>
+
+  <article class="summary-card completed-card">
+    <span class="summary-label">Concluídas</span>
+    <strong class="summary-value">{{ completedTasks() }}</strong>
+    <span class="summary-description">tarefas finalizadas</span>
+  </article>
+</section>

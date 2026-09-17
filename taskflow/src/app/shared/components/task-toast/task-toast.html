@@ -1,0 +1,22 @@
+<div
+  class="task-toast"
+  [class.task-toast-success]="type() === 'success'"
+  [class.task-toast-error]="type() === 'error'"
+  [attr.role]="type() === 'error' ? 'alert' : 'status'"
+  aria-live="polite"
+>
+  <span class="task-toast-icon" aria-hidden="true">
+    {{ type() === 'success' ? '✓' : '!' }}
+  </span>
+
+  <p class="task-toast-message">{{ message() }}</p>
+
+  <button
+    type="button"
+    class="task-toast-close"
+    aria-label="Fechar notificação"
+    (click)="close()"
+  >
+    <span aria-hidden="true">×</span>
+  </button>
+</div>

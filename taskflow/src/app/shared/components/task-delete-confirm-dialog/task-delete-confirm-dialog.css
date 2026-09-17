@@ -1,0 +1,145 @@
+:host {
+  display: contents;
+}
+
+.dialog-backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgb(10 0 3 / 72%);
+  backdrop-filter: blur(5px);
+  animation: fade-in 180ms ease-out;
+}
+
+.dialog {
+  width: min(100%, 420px);
+  padding: 28px;
+  border: 1px solid rgb(254 205 211 / 24%);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at top right, rgb(159 18 57 / 35%), transparent 45%),
+    linear-gradient(145deg, #410815, #21040a);
+  box-shadow:
+    0 24px 70px rgb(0 0 0 / 55%),
+    inset 0 1px 0 rgb(255 255 255 / 8%);
+  color: #fff1f2;
+  animation: dialog-enter 180ms ease-out;
+}
+
+.dialog-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 18px;
+  place-items: center;
+  border: 1px solid #fb7185;
+  border-radius: 14px;
+  background: rgb(159 18 57 / 32%);
+  color: #fecdd3;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+h2 {
+  margin: 0 0 10px;
+  color: #fff1f2;
+  font-size: 1.45rem;
+}
+
+p {
+  margin: 0;
+  color: #fecdd3;
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+strong {
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.button-secondary,
+.button-danger {
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    filter 160ms ease,
+    background 160ms ease;
+}
+
+.button-secondary:hover,
+.button-danger:hover {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+
+.button-secondary:focus-visible,
+.button-danger:focus-visible {
+  outline: 3px solid rgb(253 164 175 / 60%);
+  outline-offset: 3px;
+}
+
+.button-secondary {
+  border: 1px solid rgb(254 205 211 / 25%);
+  background: rgb(255 255 255 / 7%);
+  color: #ffe4e6;
+}
+
+.button-danger {
+  border: 1px solid #fb7185;
+  background: linear-gradient(135deg, #e11d48, #9f1239);
+  color: #fff;
+  box-shadow: 0 8px 18px rgb(159 18 57 / 35%);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 420px) {
+  .dialog {
+    padding: 22px;
+  }
+
+  .dialog-actions {
+    flex-direction: column-reverse;
+  }
+
+  .button-secondary,
+  .button-danger {
+    width: 100%;
+  }
+}

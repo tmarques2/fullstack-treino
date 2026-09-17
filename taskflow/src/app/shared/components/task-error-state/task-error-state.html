@@ -1,0 +1,11 @@
+<section class="error-state" role="alert">
+  <div class="error-icon" aria-hidden="true">!</div>
+
+  <h2>Não foi possível carregar as tarefas</h2>
+
+  <p>{{ message() }}</p>
+
+  <button type="button" (click)="requestRetry()">
+    Tentar novamente
+  </button>
+</section>

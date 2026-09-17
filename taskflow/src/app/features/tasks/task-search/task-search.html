@@ -1,0 +1,19 @@
+<div class="task-search">
+  <input
+    class="search-input"
+    type="search"
+    placeholder="Pesquisar tarefas..."
+    [value]="searchTerm()"
+    (input)="updateSearch($event)"
+    aria-label="Pesquisar tarefas pelo título"
+  />
+
+  <button
+    type="button"
+    class="clear-search-button"
+    [disabled]="!searchTerm()"
+    (click)="clearSearch()"
+  >
+    Limpar
+  </button>
+</div>

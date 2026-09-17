@@ -1,0 +1,35 @@
+.task-filters {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.task-filters button {
+  flex: 1;
+  min-width: max-content;
+  height: 36px;
+  border: 1px solid #7f1d1d;
+  border-radius: 9px;
+  padding: 0 14px;
+  background: rgb(55 6 14 / 78%);
+  color: #fecdd3;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.task-filters button:hover {
+  border-color: #fb7185;
+  background: rgb(136 19 55 / 72%);
+  color: #ffffff;
+}
+
+.task-filters button.active {
+  border-color: #fb7185;
+  background: linear-gradient(135deg, #be123c, #881337);
+  color: #ffffff;
+  box-shadow: 0 5px 16px rgb(136 19 55 / 28%);
+}

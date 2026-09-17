@@ -1,0 +1,38 @@
+<main class="task-page">
+    <app-task-toast *ngIf="toastMessage" [message]="toastMessage" [type]="toastType"
+        (dismissed)="hideToast()"></app-task-toast>
+    <section class="task-card">
+        <header class="header">
+            <div>
+                <p class="eyebrow">MEU ORGANIZADOR</p>
+                <h1>TaskFlow</h1>
+                <app-task-summary [totalTasks]="totalTasksCount" [pendingTasks]="pendingTasksCount"
+                    [completedTasks]="completedTasksCount"></app-task-summary>
+            </div>
+            <div class="icon">✓</div>
+        </header>
+
+        <app-task-form (taskCreated)="addTask($event)"></app-task-form>
+
+        <app-task-toolbar [searchTerm]="searchTerm" [activeFilter]="activeFilter"
+            (searchChanged)="setSearchTerm($event)" (filterChanged)="setFilter($event)"></app-task-toolbar>
+
+        <ul class="task-list">
+            <app-task-loading *ngIf="isLoading" message="Carregando tarefas da API..."></app-task-loading>
+
+            <app-task-error-state *ngIf="!isLoading && errorMessage" [message]="errorMessage"
+                (retryRequested)="loadTasks()"></app-task-error-state>
+
+            <app-task-empty-state *ngIf="!isLoading && !errorMessage && filteredTasks.length === 0"
+                [filter]="activeFilter"></app-task-empty-state>
+
+            <div *ngIf="!isLoading && !errorMessage && filteredTasks.length > 0" class="task-list">
+                <app-task-item *ngFor="let task of filteredTasks" [task]="task" (taskToggled)="toggleTask($event)"
+                    (taskDeleted)="openDeleteConfirmation($event)" (taskEdited)="updateTaskTitle($event)"></app-task-item>
+            </div>
+        </ul>
+        <app-task-delete-confirm-dialog *ngIf="taskPendingDeletion as task" [taskTitle]="task.title"
+            (confirmed)="confirmDeletion()" (cancelled)="cancelDeletion()"></app-task-delete-confirm-dialog>
+
+    </section>
+</main>

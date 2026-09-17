@@ -1,0 +1,28 @@
+<form class="task-form" (ngSubmit)="submitTask()">
+    <div class="task-form-fields">
+        <input [(ngModel)]="newTaskTitle" class="task-input" type="text" name="taskTitle"
+            placeholder="Digite uma nova tarefa..." maxlength="120" autocomplete="off" required />
+
+        <div class="task-form-options">
+            <label class="task-field-label" for="taskPriority">
+                <span>Prioridade</span>
+
+                <select id="taskPriority" [(ngModel)]="newTaskPriority" class="task-date-input" type="date"
+                    name="taskPriority">
+                    <option value="LOW">Baixa</option>
+                    <option value="MEDIUM">Média</option>
+                    <option value="HIGH">Alta</option>
+                </select>
+            </label>
+
+            <label class="task-field-label" for="taskDueDate">
+                <span>Prazo</span>
+                <input id="taskDueDate" [(ngModel)]="newTaskDueDate" class="task-date-input" type="date" name="taskDueDate" />
+            </label>
+        </div>
+    </div>
+
+    <button class="add-task-button" type="submit" [disabled]="!newTaskTitle.trim()">
+        Adicionar
+    </button>
+</form>

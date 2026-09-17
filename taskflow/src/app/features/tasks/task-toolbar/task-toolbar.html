@@ -1,0 +1,11 @@
+<div class="toolbar">
+  <app-task-search
+    [searchTerm]="searchTerm()"
+    (searchChanged)="handleSearchChanged($event)"
+  ></app-task-search>
+
+  <app-task-filters
+    [activeFilter]="activeFilter()"
+    (filterChanged)="handleFilterChanged($event)"
+  ></app-task-filters>
+</div>
